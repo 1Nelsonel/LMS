@@ -4,9 +4,10 @@
 
 {% load static %}
 
-  <!--====== PAGE BANNER PART START ======-->
-    
-  <section id="page-banner" class="pt-105 pb-130 bg_cover" data-overlay="8" style="background-image: url({% static 'images/page-banner-4.jpg' %})">
+<!--====== PAGE BANNER PART START ======-->
+
+<section id="page-banner" class="pt-105 pb-130 bg_cover" data-overlay="8"
+    style="background-image: url({% static 'images/page-banner-4.jpg' %})">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -18,7 +19,7 @@
                             <li class="breadcrumb-item active" aria-current="page">Blog</li>
                         </ol>
                     </nav>
-                </div>  <!-- page banner cont -->
+                </div> <!-- page banner cont -->
             </div>
         </div> <!-- row -->
     </div> <!-- container -->
@@ -30,27 +31,29 @@
 
 <section id="blog-page" class="pt-90 pb-120 gray-bg">
     <div class="container">
-       <div class="row">
-           <div class="col-lg-8">
-               <!-- singel blog -->
-               {% for blog in blogs %}
-               <div class="singel-blog mt-30">
-                   <div class="blog-thum">
-                       <img src="{{blog.image.url}}" alt="Blog">
-                   </div>
-                   <div class="blog-cont">
-                       <a href="{% url 'blogSingle' blog.id %}"><h3>{{blog.title}}</h3></a>
-                       <ul>
-                           <li><a href="#"><i class="fa fa-calendar"></i>{{blog.created | timesince}}: ago</a></li>
-                           <li><a href="#"><i class="fa fa-user"></i>{{blog.host}}</a></li>
-                           <li><a href="#"><i class="fa fa-tags"></i>{{blog.category}}</a></li>
-                       </ul>
-                       <p>{{blog.body |truncatewords:35}}</p>
-                   </div>
-               </div> 
-               {% endfor %}
-               <!-- singel blog -->
-               <nav class="courses-pagination mt-50">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- singel blog -->
+                {% for blog in blogs %}
+                <div class="singel-blog mt-30">
+                    <div class="blog-thum">
+                        <img src="{{blog.image.url}}" alt="Blog">
+                    </div>
+                    <div class="blog-cont">
+                        <a href="{% url 'blogSingle' blog.id %}">
+                            <h3>{{blog.title}}</h3>
+                        </a>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-calendar"></i>{{blog.created | timesince}}: ago</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>{{blog.host}}</a></li>
+                            <li><a href="#"><i class="fa fa-tags"></i>{{blog.category}}</a></li>
+                        </ul>
+                        <p>{{blog.body |truncatewords:35}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- singel blog -->
+                <nav class="courses-pagination mt-50">
                     <ul class="pagination justify-content-lg-end justify-content-center">
                         <li class="page-item">
                             <a href="#" aria-label="Previous">
@@ -66,51 +69,53 @@
                             </a>
                         </li>
                     </ul>
-                </nav>  <!-- courses pagination -->
-           </div>
-           <div class="col-lg-4">
-               <div class="saidbar">
-                   <div class="row">
-                       <div class="col-lg-12 col-md-6">
-                           <div class="saidbar-search mt-30">
-                               <form action="#">
-                                   <input type="text" placeholder="Search">
-                                   <button type="button"><i class="fa fa-search"></i></button>
-                               </form>
-                           </div> <!-- saidbar search -->
-                           <div class="categories mt-30">
-                               <h4>Categories</h4>
-                               <ul>
-                                {% for cat in topics %}
-                                   <li><a href="#">{{cat.name}}</a></li>
-                                {% endfor %} 
-                               </ul>
-                           </div>
-                       </div> <!-- categories -->
-                       <div class="col-lg-12 col-md-6">
-                           <div class="saidbar-post mt-30">
-                               <h4>Popular Posts</h4>
-                               <ul>
-                                   <li>
+                </nav> <!-- courses pagination -->
+            </div>
+            <div class="col-lg-4">
+                <div class="saidbar">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6">
+                            <div class="saidbar-search mt-30">
+                                <form action="#">
+                                    <input type="text" placeholder="Search">
+                                    <button type="button"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div> <!-- saidbar search -->
+                            <div class="categories mt-30">
+                                <h4>Categories</h4>
+                                <ul>
+                                    {% for cat in topics %}
+                                    <li><a href="#">{{cat.name}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div> <!-- categories -->
+                        <div class="col-lg-12 col-md-6">
+                            <div class="saidbar-post mt-30">
+                                <h4>Popular Posts</h4>
+                                <ul>
+                                    <!-- {% for blog in blogs %} -->
+                                    <li>
                                         <a href="#">
                                             <div class="singel-post">
-                                               <div class="thum">
-                                                   <img src="{% static 'images/blog/blog-post/bp-1.jpg' %}" alt="Blog">
-                                               </div>
-                                               <div class="cont">
-                                                   <h6>Introduction to languages</h6>
-                                                   <span>20 Dec 2018</span>
-                                               </div>
-                                           </div> <!-- singel post -->
+                                                <div class="thum">
+                                                    <img src="{{blog.image.url}}" width="80" height="80" alt="Blog">
+                                                </div>
+                                                <div class="cont">
+                                                    <h6>{{blog.title}}</h6>
+                                                    <span>20 Dec 2018</span>
+                                                </div>
+                                            </div> <!-- singel post -->
                                         </a>
-                                   </li>
-                               </ul>
-                           </div> <!-- saidbar post -->
-                       </div>
-                   </div> <!-- row -->
-               </div> <!-- saidbar -->
-           </div>
-       </div> <!-- row -->
+                                    </li>
+                                    <!-- {% endfor %} -->
+                                </ul>
+                            </div> <!-- saidbar post -->
+                        </div>
+                    </div> <!-- row -->
+                </div> <!-- saidbar -->
+            </div>
+        </div> <!-- row -->
     </div> <!-- container -->
 </section>
 
