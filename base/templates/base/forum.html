@@ -108,43 +108,28 @@
                                         <h6>{{forum.title}}</h6>
                                     </div>
                                     <div class="accordion" id="accordionExample">
+                                        {% for curriculum in curriculums %}
                                         <div class="card">
                                             <div class="card-header" id="headingOne">
                                                 <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                     <ul>
                                                         <li><i class="fa fa-file-o"></i></li>
-                                                        <li><span class="lecture">Lecture 1.1</span></li>
-                                                        <li><span class="head">What is javascirpt</span></li>
-                                                        <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
+                                                        <li><span class="lecture">Lecture {{ forloop.counter }}.0 </span></li>
+                                                        <li><span class="head">{{curriculum.name}}</span></li>
+                                                        <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> {{curriculum.created | timesince}}</span></span></li>
                                                     </ul>
                                                 </a>
                                             </div>
 
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                 <div class="card-body">
-                                                    <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
+                                                    <p>{{curriculum.description}}</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endfor %}
                                         
-                                        <div class="card">
-                                            <div class="card-header" id="headingTow">
-                                                <a href="#" data-toggle="collapse" class="collapsed" data-target="#collapseTow" aria-expanded="true" aria-controls="collapseTow">
-                                                    <ul>
-                                                        <li><i class="fa fa-file-o"></i></li>
-                                                        <li><span class="lecture">Lecture 1.2</span></li>
-                                                        <li><span class="head">What is javascirpt</span></li>
-                                                        <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
-                                                    </ul>
-                                                </a>
-                                            </div>
-
-                                            <div id="collapseTow" class="collapse" aria-labelledby="headingTow" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                     
 
                                         <!-- <div class="card">
                                             <div class="card-header" id="headingThree">
@@ -240,13 +225,14 @@
                             </div>
                             <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                                 <div class="instructor-cont">
+                                    {% for profile in profiles %}
                                     <div class="instructor-author">
                                         <div class="author-thum">
-                                            <img src="{% static 'images/instructor/i-1.jpg' %}" alt="Instructor">
+                                            <img src="{{profile.image.url}}" width="50" height="50" alt="Instructor">
                                         </div>
                                         <div class="author-name">
-                                            <a href="#"><h5>Sumon Hasan</h5></a>
-                                            <span>Senior WordPress Developer</span>
+                                            <a href="#"><h5>{{curriculum.profile.name}}</h5></a>
+                                            <span><b>School</b>: {{profile.school}}</span>
                                             <ul class="social">
                                                 <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -256,8 +242,9 @@
                                         </div>
                                     </div>
                                     <div class="instructor-description pt-25">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus fuga ratione molestiae unde provident quibusdam sunt, doloremque. Error omnis mollitia, ex dolor sequi. Et, quibusdam excepturi. Animi assumenda, consequuntur dolorum odio sit inventore aliquid, optio fugiat alias. Veritatis minima, dicta quam repudiandae repellat non sit, distinctio, impedit, expedita tempora numquam?</p>
+                                        <p>{{profile.about}}</p>
                                     </div>
+                                    {% endfor %}
                                 </div> <!-- instructor cont -->
                             </div>
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">

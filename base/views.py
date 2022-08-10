@@ -1,7 +1,7 @@
 from pydoc_data.topics import topics
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from base.models import Blog, Category, Comment, Curriculum, Event, Forum
+from base.models import Blog, Category, Comment, Curriculum, Event, Forum, Profile
 
 # Create your views here.
 def home(request):
@@ -20,8 +20,9 @@ def community(request):
 
 def forum(request, pk):
     forum = Forum.objects.get(id=pk)
-    carriculums = Curriculum.objects.all()
-    context = {'forum': forum, 'carriculums': carriculums}
+    curriculums = Curriculum.objects.all()
+    profiles = Profile.objects.all()
+    context = {'forum': forum, 'curriculums': curriculums, 'profiles': profiles}
     return render(request, 'base/forum.html', context)
 
 def event(request):
