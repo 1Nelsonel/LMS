@@ -10,7 +10,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Room(models.Model):
+class Forum(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='image', null=True)
@@ -24,12 +24,13 @@ class Room(models.Model):
         ordering = ['-updated', '-created']
 
     def __str__(self):
-        return self.name[0:50]
+        return self.title[0:50]
 
 class Curriculum(models.Model):
-    name = models.CharField(max_length=200)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
     file = models.FileField(upload_to="files", blank=True, null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -43,7 +44,7 @@ class Curriculum(models.Model):
 
 class Message(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
     body = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -56,8 +57,7 @@ class Message(models.Model):
 
 class Blog(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200)
     body = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='image', null=True)
