@@ -14,9 +14,9 @@
                     <h2>Learn basic javascript</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Courses</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Learn basic javasript</li>
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'community' %}">Community</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{forum.title}}</li>
                         </ol>
                     </nav>
                 </div>  <!-- page banner cont -->
@@ -35,7 +35,7 @@
             <div class="col-lg-8">
                 <div class="corses-singel-left mt-30">
                     <div class="title">
-                        <h3>Learn basis javascirpt from start for beginner</h3>
+                        <h3>{{forum.title}}</h3>
                     </div> <!-- title -->
                     <div class="course-terms">
                         <ul>
@@ -45,15 +45,15 @@
                                         <img src="{% static 'images/course/teacher/t-1.jpg' %}" alt="Teacher">
                                     </div>
                                     <div class="name">
-                                        <span>Teacher</span>
-                                        <h6>Mark anthem</h6>
+                                        <span>Host</span>
+                                        <h6>{{forum.host}}</h6>
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div class="course-category">
                                     <span>Category</span>
-                                    <h6>Programaming </h6>
+                                    <h6>{{forum.category}} </h6>
                                 </div>
                             </li>
                             <li>
@@ -73,7 +73,7 @@
                     </div> <!-- course terms -->
                     
                     <div class="corses-singel-image pt-50">
-                        <img src="{% static 'images/course/cu-1.jpg' %}" alt="Courses">
+                        <img src="{{forum.image.url}}" alt="Courses">
                     </div> <!-- corses singel image -->
                     
                     <div class="corses-tab mt-30">
@@ -97,18 +97,15 @@
                                 <div class="overview-description">
                                     <div class="singel-description pt-40">
                                         <h6>Course Summery</h6>
-                                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
+                                        <p>{{forum.description}}</p>
                                     </div>
-                                    <div class="singel-description pt-40">
-                                        <h6>Requrements</h6>
-                                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
-                                    </div>
+                                    
                                 </div> <!-- overview description -->
                             </div>
                             <div class="tab-pane fade" id="curriculam" role="tabpanel" aria-labelledby="curriculam-tab">
                                 <div class="curriculam-cont">
                                     <div class="title">
-                                        <h6>Learn basis javascirpt Lecture Started</h6>
+                                        <h6>{{forum.title}}</h6>
                                     </div>
                                     <div class="accordion" id="accordionExample">
                                         <div class="card">
@@ -149,7 +146,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="card">
+                                        <!-- <div class="card">
                                             <div class="card-header" id="headingThree">
                                                 <a href="#" data-toggle="collapse" class="collapsed" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                     <ul>
@@ -237,7 +234,7 @@
                                                     <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div> <!-- curriculam cont -->
                             </div>

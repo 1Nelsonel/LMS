@@ -29,7 +29,7 @@ class Forum(models.Model):
 class Curriculum(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
+    # name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     file = models.FileField(upload_to="files", blank=True, null=True)
     updated = models.DateTimeField(auto_now=True)
@@ -38,8 +38,8 @@ class Curriculum(models.Model):
     class Meta:
         ordering = ['-updated', '-created']
 
-    def __str__(self):
-        return self.name[0:50]
+    # def __str__(self):
+    #     return self.id[0:50]
     
 
 class Message(models.Model):
